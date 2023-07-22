@@ -4,19 +4,17 @@
  */
 
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * swap_ints - Swap two integers in an array.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
-{
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 }
 
 /**
@@ -26,26 +24,24 @@ void swap_ints(int *a, int *b)
  *
  * Description: Prints the array after each swap.
  */
-void bubble_sort(int *array, size_t size)
-{
-	size_t i, len = size;
-	bool bubbly = false;
+void bubble_sort(int *array, size_t size) {
+    for (size_t i = 0; i < size - 1; i++) {
+        int swapped = 0;
+        for (size_t j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                swap(&array[j], &array[j + 1]);
+                swapped = 1;
+            }
+        }
+        // If no two elements were swapped in the inner loop, the array is already sorted.
+        if (!swapped)
+            break;
 
-	if (array == NULL || size < 2)
-		return;
-
-	while (bubbly == false)
-	{
-		bubbly = true;
-		for (i = 0; i < len - 1; i++)
-		{
-			if (array[i] > array[i + 1])
-			{
-				swap_ints(array + i, array + i + 1);
-				print_array(array, size);
-				bubbly = false;
-			}
-		}
-		len--;
-	}
+        // Print the array after each pass
+        printf("Pass %zu: ", i + 1);
+        for (size_t k = 0; k < size; k++) {
+            printf("%d ", array[k]);
+        }
+        printf("\n");
+    }
 }
