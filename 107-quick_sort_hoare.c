@@ -1,6 +1,6 @@
 /*
  * File: 107-quick_sort_hoare.c
- * Auth: Brennan D Baraban
+ * Auth: John Mwadime
  */
 
 #include "sort.h"
