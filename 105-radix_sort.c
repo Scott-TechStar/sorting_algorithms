@@ -1,6 +1,6 @@
 /*
  * File: 105-radix_sort.c
- * Auth: Brennan D Baraban
+ * Auth: John Mwadime
  */
 
 #include "sort.h"
